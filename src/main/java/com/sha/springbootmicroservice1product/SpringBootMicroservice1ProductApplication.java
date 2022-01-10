@@ -1,5 +1,6 @@
 package com.sha.springbootmicroservice1product;
 
+import com.sha.springbootmicroservice1product.model.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;

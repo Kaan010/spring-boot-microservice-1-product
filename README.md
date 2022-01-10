@@ -1,5 +1,5 @@
 # Microservice Product
-This service will be one of three service.
+This service is first of three micro-service.
 
 ### Endpoints:
 

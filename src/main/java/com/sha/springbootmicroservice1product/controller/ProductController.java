@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
 
     private final ProductService productService;
-
-    @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
 
-    @RequestMapping(method = RequestMethod.POST)// ->api/product
+    @GetMapping // ->api/product
+    public ResponseEntity<?> getAllProducts(){
+        return ResponseEntity.ok(productService.findAllProducts());
+    }
+
+    @PostMapping
     public ResponseEntity<?> saveProduct(@RequestBody Product product){
         return new ResponseEntity<>(
                 productService.saveProduct(product),
@@ -29,7 +32,7 @@ public class ProductController {
         );
     }
 
-    @RequestMapping(value = "/{productId}" , method = RequestMethod.DELETE)// -> api/product/{productId}
+    @DeleteMapping(value = "/{productId}")// -> api/product/{productId}
     public ResponseEntity<?> deleteProduct(@PathVariable Long productId){
         productService.deleteProduct(productId);
         return new ResponseEntity<>(
@@ -37,9 +40,5 @@ public class ProductController {
         );
     }
 
-    @RequestMapping(method = RequestMethod.GET)// ->api/product
-    public ResponseEntity<?> getAllProducts(){
-        return ResponseEntity.ok(productService.findAllProducts());
-    }
 
 }
